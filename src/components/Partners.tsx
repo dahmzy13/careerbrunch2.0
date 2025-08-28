@@ -41,7 +41,7 @@ const Partners = () => {
       partners: [
         {
           name: "Community Partner 1",
-          logo: "https://res.cloudinary.com/dh6ljzabj/image/upload/v1750978602/JPEG_image-4632-9101-DE-0_awnxes.jpg"
+          logo:"https://res.cloudinary.com/dh6ljzabj/image/upload/v1750978602/JPEG_image-4632-9101-DE-0_awnxes.jpg?auto=compress&cs=tinysrgb&w=400"
         },
         {
           name: "Community Partner 2",
