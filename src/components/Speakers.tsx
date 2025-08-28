@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const Speakers = () => {
   const speakerCategories = [
@@ -9,15 +9,19 @@ const Speakers = () => {
           name: "TBA",
           title: "Event Host",
           organization: "To Be Announced",
-          image: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400",
-          bio: "Our experienced host will guide you through the day's transformative sessions"
+          image: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400"
         },
         {
           name: "TBA",
           title: "Session Moderator",
           organization: "To Be Announced",
-          image: "https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=400",
-          bio: "Expert moderator facilitating engaging discussions and panels"
+          image: "https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=400"
+        },
+        {
+          name: "TBA",
+          title: "Panel Moderator",
+          organization: "To Be Announced",
+          image: "https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=400"
         }
       ]
     },
@@ -28,29 +32,37 @@ const Speakers = () => {
           name: "TBA",
           title: "Keynote Speaker",
           organization: "To Be Announced",
-          image: "https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=400",
-          bio: "Delivering an inspiring message on 'Where Ambition Meets Opportunity'"
+          image: "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=400"
         },
         {
           name: "Finance Expert",
           title: "Investment Strategist",
           organization: "Financial Services",
-          image: "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=400",
-          bio: "Specializing in personal finance and investment strategies for young professionals"
+          image: "https://images.pexels.com/photos/3184340/pexels-photo-3184340.jpeg?auto=compress&cs=tinysrgb&w=400"
         },
         {
           name: "Storytelling Coach",
           title: "Brand Narrative Specialist",
           organization: "Creative Agency",
-          image: "https://images.pexels.com/photos/3184340/pexels-photo-3184340.jpeg?auto=compress&cs=tinysrgb&w=400",
-          bio: "Expert in crafting compelling personal and professional narratives"
+          image: "https://images.pexels.com/photos/3184293/pexels-photo-3184293.jpeg?auto=compress&cs=tinysrgb&w=400"
         },
         {
           name: "Innovation Leader",
           title: "Startup Founder",
           organization: "Tech Startup",
-          image: "https://images.pexels.com/photos/3184293/pexels-photo-3184293.jpeg?auto=compress&cs=tinysrgb&w=400",
-          bio: "Guiding entrepreneurs from idea conception to market impact"
+          image: "https://images.pexels.com/photos/3184341/pexels-photo-3184341.jpeg?auto=compress&cs=tinysrgb&w=400"
+        },
+        {
+          name: "AI Expert",
+          title: "Technology Strategist",
+          organization: "Tech Company",
+          image: "https://images.pexels.com/photos/3184294/pexels-photo-3184294.jpeg?auto=compress&cs=tinysrgb&w=400"
+        },
+        {
+          name: "Career Coach",
+          title: "Professional Development",
+          organization: "Consulting Firm",
+          image: "https://images.pexels.com/photos/3184295/pexels-photo-3184295.jpeg?auto=compress&cs=tinysrgb&w=400"
         }
       ]
     },
@@ -61,22 +73,19 @@ const Speakers = () => {
           name: "Career Mentor 1",
           title: "Senior Manager",
           organization: "Fortune 500 Company",
-          image: "https://images.pexels.com/photos/3184341/pexels-photo-3184341.jpeg?auto=compress&cs=tinysrgb&w=400",
-          bio: "Experienced in climbing the corporate ladder and leadership development"
+          image: "https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg?auto=compress&cs=tinysrgb&w=400"
         },
         {
           name: "Career Mentor 2",
           title: "HR Director",
           organization: "Global Corporation",
-          image: "https://images.pexels.com/photos/3184294/pexels-photo-3184294.jpeg?auto=compress&cs=tinysrgb&w=400",
-          bio: "Expert in talent development and career progression strategies"
+          image: "https://images.pexels.com/photos/3184297/pexels-photo-3184297.jpeg?auto=compress&cs=tinysrgb&w=400"
         },
         {
           name: "Industry Mentor",
           title: "Tech Executive",
           organization: "Leading Tech Company",
-          image: "https://images.pexels.com/photos/3184295/pexels-photo-3184295.jpeg?auto=compress&cs=tinysrgb&w=400",
-          bio: "Guiding young professionals in navigating the tech industry landscape"
+          image: "https://images.pexels.com/photos/3184298/pexels-photo-3184298.jpeg?auto=compress&cs=tinysrgb&w=400"
         }
       ]
     }
@@ -98,12 +107,12 @@ const Speakers = () => {
         <div className="space-y-16">
           {speakerCategories.map((category, categoryIndex) => (
             <div key={categoryIndex}>
-              <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-                {category.category}
+              <h3 className="text-3xl font-bold text-gray-900 mb-8 text-left">
+                {category.category}<span className="text-[#1060D3]">.</span>
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {category.speakers.map((speaker, speakerIndex) => (
-                  <div key={speakerIndex} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                  <div key={speakerIndex} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
                     <div className="relative overflow-hidden">
                       <img
                         src={speaker.image}
@@ -124,8 +133,8 @@ const Speakers = () => {
         </div>
 
         {/* Note about TBA */}
-        <div className="text-center mt-12">
-          <div className="bg-gradient-to-r from-[#1060D3]/10 to-[#00FFBD]/10 rounded-2xl p-8">
+        <div className="text-center mt-16">
+          <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-2xl p-8 border border-gray-200">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">More Speakers Coming Soon!</h3>
             <p className="text-gray-600 max-w-2xl mx-auto">
               We're finalizing our incredible lineup of industry leaders, successful entrepreneurs, and career experts. 

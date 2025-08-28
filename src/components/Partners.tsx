@@ -4,66 +4,114 @@ const Partners = () => {
   const partnerCategories = [
     {
       title: "Sponsors",
-      description: "Supporting our mission to bridge the gap between ambition and opportunity",
-      partners: []
+      partners: [
+        {
+          name: "Sponsor 1",
+          logo: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400"
+        },
+        {
+          name: "Sponsor 2", 
+          logo: "https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=400"
+        },
+        {
+          name: "Sponsor 3",
+          logo: "https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=400"
+        }
+      ]
     },
     {
       title: "Talent Partners",
-      description: "Connecting attendees with career opportunities and growth paths",
-      partners: []
+      partners: [
+        {
+          name: "Talent Partner 1",
+          logo: "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=400"
+        },
+        {
+          name: "Talent Partner 2",
+          logo: "https://images.pexels.com/photos/3184340/pexels-photo-3184340.jpeg?auto=compress&cs=tinysrgb&w=400"
+        },
+        {
+          name: "Talent Partner 3",
+          logo: "https://images.pexels.com/photos/3184293/pexels-photo-3184293.jpeg?auto=compress&cs=tinysrgb&w=400"
+        }
+      ]
     },
     {
       title: "Community Partners",
-      description: "Building stronger networks and fostering collaboration",
-      partners: []
+      partners: [
+        {
+          name: "Community Partner 1",
+          logo: "https://images.pexels.com/photos/3184341/pexels-photo-3184341.jpeg?auto=compress&cs=tinysrgb&w=400"
+        },
+        {
+          name: "Community Partner 2",
+          logo: "https://images.pexels.com/photos/3184294/pexels-photo-3184294.jpeg?auto=compress&cs=tinysrgb&w=400"
+        },
+        {
+          name: "Community Partner 3",
+          logo: "https://images.pexels.com/photos/3184295/pexels-photo-3184295.jpeg?auto=compress&cs=tinysrgb&w=400"
+        }
+      ]
     },
     {
       title: "Media Partners",
-      description: "Amplifying our message and extending our reach across Africa",
-      partners: []
+      partners: [
+        {
+          name: "Media Partner 1",
+          logo: "https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg?auto=compress&cs=tinysrgb&w=400"
+        },
+        {
+          name: "Media Partner 2",
+          logo: "https://images.pexels.com/photos/3184297/pexels-photo-3184297.jpeg?auto=compress&cs=tinysrgb&w=400"
+        },
+        {
+          name: "Media Partner 3",
+          logo: "https://images.pexels.com/photos/3184298/pexels-photo-3184298.jpeg?auto=compress&cs=tinysrgb&w=400"
+        }
+      ]
     }
   ];
 
   return (
-    <section id="partners" className="py-20 bg-gradient-to-br from-[#1060D3] to-[#1053A2]">
+    <section id="partners" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            SPONSORS & PARTNERS<span className="text-[#00FFBD]">.</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            SPONSORS & PARTNERS<span className="text-[#1060D3]">.</span>
           </h2>
-          <p className="text-xl text-white/90 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             We're building partnerships with leading organizations who share our vision of empowering Africa's young professionals.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {partnerCategories.map((category, index) => (
-            <div key={index} className="bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center">
-              <h3 className="text-2xl font-bold text-white mb-4">{category.title}</h3>
-              <p className="text-white/80 mb-6">{category.description}</p>
-              
-              {category.partners.length > 0 ? (
-                <div className="grid grid-cols-2 gap-4">
-                  {category.partners.map((partner, partnerIndex) => (
-                    <div key={partnerIndex} className="bg-white rounded-lg p-4 flex items-center justify-center">
-                      <span className="text-gray-800 font-semibold">{partner}</span>
+        {/* Partner Categories */}
+        <div className="space-y-16">
+          {partnerCategories.map((category, categoryIndex) => (
+            <div key={categoryIndex}>
+              <h3 className="text-3xl font-bold text-gray-900 mb-8 text-left">
+                {category.title}<span className="text-[#1060D3]">.</span>
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {category.partners.map((partner, partnerIndex) => (
+                  <div key={partnerIndex} className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200 flex items-center justify-center min-h-[120px]">
+                    <div className="text-center">
+                      <div className="w-16 h-16 bg-gray-200 rounded-lg mx-auto mb-3 flex items-center justify-center">
+                        <span className="text-gray-500 text-xs font-semibold">LOGO</span>
+                      </div>
+                      <p className="text-sm font-semibold text-gray-700">{partner.name}</p>
                     </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="bg-white/20 rounded-lg p-8 border-2 border-dashed border-white/30">
-                  <p className="text-white/70 font-semibold">Coming Soon</p>
-                </div>
-              )}
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
         </div>
 
         {/* Partnership CTA */}
-        <div className="text-center">
-          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 max-w-4xl mx-auto">
-            <h3 className="text-3xl font-bold text-white mb-4">Become a Partner</h3>
-            <p className="text-white/90 mb-6 text-lg">
+        <div className="text-center mt-16">
+          <div className="bg-gradient-to-r from-[#1060D3] to-[#0E4FB8] rounded-2xl p-8 text-white">
+            <h3 className="text-3xl font-bold mb-4">Become a Partner</h3>
+            <p className="text-white/90 mb-6 text-lg max-w-2xl mx-auto">
               Join us in empowering the next generation of African professionals. We have exciting partnership 
               opportunities for corporate sponsors, vendors, community networks, and talent programs.
             </p>
