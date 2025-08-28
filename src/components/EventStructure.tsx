@@ -19,7 +19,7 @@ const EventStructure = () => {
       count: "3 Sessions",
       description: "Deep dives into career and life skills with industry leaders",
       topics: ["Finance & Investment", "Storytelling for Growth", "Idea-to-Impact Building"],
-      color: "from-gray-800 to-gray-900"
+      color: "from-[#1060D3] to-[#0E4FB8]"
     },
     {
       icon: Users,
@@ -27,7 +27,7 @@ const EventStructure = () => {
       count: "1 Panel",
       description: "Staying Relevant in an AI-Driven World: Threat or Opportunity?",
       topics: ["Corporate Professionals", "Freelancers", "Creators", "Startup Employees"],
-      color: "from-gray-700 to-gray-800"
+      color: "from-purple-600 to-purple-800"
     },
     {
       icon: Star,
@@ -35,7 +35,7 @@ const EventStructure = () => {
       count: "1 Session",
       description: "A showstopper keynote delivering an unforgettable message",
       topics: ["Where Ambition Meets Opportunity"],
-      color: "from-gray-800 to-gray-900"
+      color: "from-indigo-600 to-indigo-800"
     },
     {
       icon: MessageCircle,
@@ -43,7 +43,7 @@ const EventStructure = () => {
       count: "1 Chat",
       description: "Climbing the Career Ladder: Lessons from Entry-Level to Manager",
       topics: ["Leadership Growth", "Career Progression", "Management Skills"],
-      color: "from-gray-700 to-gray-800"
+      color: "from-teal-600 to-teal-800"
     },
     {
       icon: Gamepad2,
@@ -51,7 +51,7 @@ const EventStructure = () => {
       count: "6+ Zones",
       description: "Hands-on engagement and networking opportunities",
       topics: ["Talent Lounge", "LinkedIn Photo Booth", "Live Wish Wall", "Lifestyle Lounge"],
-      color: "from-gray-800 to-gray-900"
+      color: "from-orange-600 to-orange-800"
     },
     {
       icon: Coffee,
@@ -59,7 +59,7 @@ const EventStructure = () => {
       count: "All Day",
       description: "Food & drink booths, vendor stands, and community networking",
       topics: ["Food Booths", "Vendor Stands", "Sponsor Engagement", "Networking Games"],
-      color: "from-gray-700 to-gray-800"
+      color: "from-green-600 to-green-800"
     }
   ];
 
