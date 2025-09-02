@@ -147,44 +147,46 @@ const Navbar = () => {
 
         {/* Enhanced Mobile Navigation */}
         <div 
-          className={`lg:hidden fixed inset-0 z-40 transition-all duration-300 ease-in-out transform ${
+          className={`lg:hidden fixed inset-0 z-40 transition-all duration-300 ease-in-out ${
             isOpen 
-              ? 'opacity-100 translate-y-0 visible' 
-              : 'opacity-0 -translate-y-4 invisible'
+              ? 'opacity-100 visible' 
+              : 'opacity-0 invisible'
           }`}
           style={{
             paddingTop: '5rem',
-            backgroundColor: isOpen ? 'rgba(0, 0, 0, 0.5)' : 'rgba(0, 0, 0, 0)'
+            backgroundColor: isOpen ? 'rgba(0, 0, 0, 0.7)' : 'rgba(0, 0, 0, 0)',
+            backdropFilter: 'blur(4px)',
+            WebkitBackdropFilter: 'blur(4px)'
           }}
         >
           <div 
-            className="bg-white/98 backdrop-blur-md rounded-t-3xl shadow-2xl border border-neutral-200 h-full overflow-y-auto"
+            className="bg-white rounded-t-3xl shadow-2xl h-[85vh] overflow-y-auto transition-transform duration-300 ease-in-out transform-gpu"
             style={{
               transform: isOpen ? 'translateY(0)' : 'translateY(100%)',
-              transition: 'transform 300ms ease-in-out',
             }}
           >
-            <div className="p-6 space-y-3">
+            <div className="p-6 space-y-4">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6 px-2">Menu</h2>
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`w-full text-left py-4 px-5 rounded-xl transition-all duration-200 font-body text-base ${
+                  className={`w-full text-left py-4 px-6 rounded-xl transition-all duration-200 text-lg ${
                     activeSection === item.id
-                      ? 'bg-primary-50 text-primary-600 font-semibold'
-                      : 'text-neutral-700 active:bg-neutral-50 active:scale-95'
+                      ? 'bg-primary-50 text-primary-700 font-semibold border-l-4 border-primary-500'
+                      : 'text-gray-800 hover:bg-gray-50 active:bg-gray-100 font-medium'
                   }`}
                 >
                   {item.label}
                 </button>
               ))}
               
-              <div className="mt-6 pt-6 border-t border-neutral-200">
+              <div className="mt-8 pt-6 border-t border-gray-200">
                 <a
                   href="https://selar.com/careerbrunch2025"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full bg-accent-500 text-white px-6 py-4 rounded-xl font-semibold active:bg-accent-600 active:scale-95 transition-all duration-200 text-center font-body flex items-center justify-center space-x-2"
+                  className="w-full bg-accent-600 text-white px-6 py-4 rounded-xl font-semibold hover:bg-accent-700 active:bg-accent-800 active:scale-[0.98] transition-all duration-200 text-center flex items-center justify-center space-x-2 shadow-md hover:shadow-lg"
                 >
                   <span>Buy Ticket</span>
                   <ExternalLink className="w-4 h-4" />

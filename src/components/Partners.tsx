@@ -206,9 +206,9 @@ const Partners = () => {
   ];
 
   return (
-    <section id="partners" className="py-24 bg-gradient-to-br from-neutral-50 to-white relative overflow-hidden">
+    <section id="partners" className="py-24 bg-gradient-to-br from-neutral-50 to-white relative overflow-hidden" style={{ zIndex: 10 }}>
       {/* Background Elements */}
-      <div className="absolute inset-0 opacity-5">
+      <div className="absolute inset-0 opacity-5" style={{ zIndex: -1 }}>
         <div className="absolute top-20 left-20 w-64 h-64 bg-primary-400 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-20 w-48 h-48 bg-accent-400 rounded-full blur-3xl"></div>
       </div>
