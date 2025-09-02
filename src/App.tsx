@@ -5,7 +5,7 @@ import About from './components/About';
 import EventStructure from './components/EventStructure';
 import Speakers from './components/Speakers';
 import Partners from './components/Partners';
-import PastEvents from './components/PastEvents';
+import EventTimeline from './components/EventTimeline';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 
@@ -18,7 +18,7 @@ function App() {
       <EventStructure />
       <Speakers />
       <Partners />
-      <PastEvents />
+      <EventTimeline />
       <FAQ />
       <Footer />
     </div>

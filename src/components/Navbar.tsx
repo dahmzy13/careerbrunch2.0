@@ -1,15 +1,43 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Coffee } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Menu, X, Coffee, ExternalLink } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isOpen]);
+
+  // Handle scroll and active section
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
+      
+      // Update active section based on scroll position
+      const sections = ['about-us', 'event-structure', 'speakers', 'partners', 'faq'];
+      const current = sections.find(section => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          return rect.top <= 100 && rect.bottom >= 100;
+        }
+        return false;
+      });
+      setActiveSection(current || '');
     };
-    window.addEventListener('scroll', handleScroll);
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -21,79 +49,150 @@ const Navbar = () => {
     }
   };
 
+  const navItems = [
+    { id: 'about-us', label: 'About Us', href: '#about-us' },
+    { id: 'event-structure', label: 'Event Structure', href: '#event-structure' },
+    { id: 'speakers', label: 'Speakers', href: '#speakers' },
+    { id: 'partners', label: 'Partners', href: '#partners' },
+    { id: 'faq', label: 'FAQ', href: '#faq' }
+  ];
+
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      scrolled ? 'bg-white/98 backdrop-blur-md shadow-lg border-b border-gray-100' : 'bg-transparent'
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+      scrolled 
+        ? 'bg-white/95 backdrop-blur-md shadow-medium border-b border-neutral-200' 
+        : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="flex items-center space-x-2">
+        <div className="flex justify-between items-center h-16 md:h-20">
+          {/* Enhanced Logo */}
+          <a href="#" className="flex items-center space-x-2 group" onClick={(e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setIsOpen(false);
+          }}>
             <div className="relative">
-              <Coffee className={`w-8 h-8 ${scrolled ? 'text-[#1060D3]' : 'text-white'}`} />
-              <div className="absolute -top-1 -right-1 w-3 h-3 bg-accent-500 rounded-full"></div>
+              <Coffee className={`w-8 h-8 md:w-10 md:h-10 transition-all duration-300 ${
+                scrolled || isOpen ? 'text-primary-600 group-hover:text-primary-700' : 'text-white group-hover:text-accent-400'
+              }`} />
+              <div className="absolute -top-1 -right-1 w-2.5 h-2.5 md:w-3 md:h-3 bg-accent-500 rounded-full animate-pulse"></div>
             </div>
-            <span className={`font-bold text-xl font-heading ${scrolled ? 'text-gray-900' : 'text-white'}`}>
+            <span className={`font-bold text-xl md:text-2xl font-display transition-colors duration-300 ${
+              scrolled || isOpen ? 'text-neutral-900' : 'text-white'
+            }`}>
               Career Brunch 2.0
             </span>
-          </div>
+          </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {['About Us', 'Event Structure', 'Speakers', 'Partners', 'FAQ'].map((item) => (
+          <div className="hidden lg:flex items-center space-x-1">
+            {navItems.map((item) => (
               <button
-                key={item}
-                onClick={() => scrollToSection(item.toLowerCase().replace(' ', '-'))}
-                className={`font-medium font-body transition-colors hover:text-accent-500 ${
-                  scrolled ? 'text-gray-700 hover:text-[#1060D3]' : 'text-white/90'
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className={`relative px-6 py-3 rounded-full font-medium font-body transition-all duration-300 ${
+                  scrolled 
+                    ? 'text-neutral-700 hover:text-primary-600 hover:bg-neutral-100' 
+                    : 'text-white/90 hover:text-white hover:bg-white/10'
+                } ${
+                  activeSection === item.id 
+                    ? scrolled 
+                      ? 'bg-primary-50 text-primary-600' 
+                      : 'bg-white/20 text-white'
+                    : ''
                 }`}
               >
-                {item}
+                {item.label}
+                {activeSection === item.id && (
+                  <div className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full ${
+                    scrolled ? 'bg-primary-600' : 'bg-accent-400'
+                  }`}></div>
+                )}
               </button>
             ))}
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSdoHnRILNznU2yqI7C4_uSv2GNjWFzHdtB6lP-NO4NOUHrorA/viewform"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-accent-500 text-white px-6 py-3 rounded-full font-semibold font-body hover:bg-accent-600 transition-all duration-300 shadow-lg hover:shadow-xl"
-            >
-              Join Waitlist
-            </a>
+            
+            <div className="ml-6">
+              <a
+                href="https://selar.com/careerbrunch2025"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group bg-accent-500 text-white px-6 py-3 rounded-full font-semibold font-body hover:bg-accent-600 transition-all duration-300 shadow-soft hover:shadow-medium transform hover:scale-105 flex items-center space-x-2"
+              >
+                <span>Buy Tickets</span>
+                <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-300" />
+              </a>
+            </div>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="lg:hidden z-50">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`p-2 transition-colors ${scrolled ? 'text-gray-700' : 'text-white'}`}
+              className={`p-3 -mr-2 rounded-lg transition-all duration-300 ${
+                scrolled || isOpen
+                  ? 'text-neutral-700 hover:bg-neutral-100' 
+                  : 'text-white hover:bg-white/10'
+              }`}
+              aria-expanded={isOpen}
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
             >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden bg-white/98 backdrop-blur-md rounded-lg mt-2 p-4 shadow-xl border border-gray-100">
-            {['About Us', 'Event Structure', 'Speakers', 'Partners', 'FAQ'].map((item) => (
-              <button
-                key={item}
-                onClick={() => scrollToSection(item.toLowerCase().replace(' ', '-'))}
-                className="block w-full text-left py-3 text-gray-700 hover:text-accent-500 transition-colors font-body"
-              >
-                {item}
-              </button>
-            ))}
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSdoHnRILNznU2yqI7C4_uSv2GNjWFzHdtB6lP-NO4NOUHrorA/viewform"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block w-full bg-accent-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-accent-600 transition-colors text-center mt-4 font-body"
-            >
-              Join Waitlist
-            </a>
+        {/* Enhanced Mobile Navigation */}
+        <div 
+          className={`lg:hidden fixed inset-0 z-40 transition-all duration-300 ease-in-out transform ${
+            isOpen 
+              ? 'opacity-100 translate-y-0 visible' 
+              : 'opacity-0 -translate-y-4 invisible'
+          }`}
+          style={{
+            paddingTop: '5rem',
+            backgroundColor: isOpen ? 'rgba(0, 0, 0, 0.5)' : 'rgba(0, 0, 0, 0)'
+          }}
+        >
+          <div 
+            className="bg-white/98 backdrop-blur-md rounded-t-3xl shadow-2xl border border-neutral-200 h-full overflow-y-auto"
+            style={{
+              transform: isOpen ? 'translateY(0)' : 'translateY(100%)',
+              transition: 'transform 300ms ease-in-out',
+            }}
+          >
+            <div className="p-6 space-y-3">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`w-full text-left py-4 px-5 rounded-xl transition-all duration-200 font-body text-base ${
+                    activeSection === item.id
+                      ? 'bg-primary-50 text-primary-600 font-semibold'
+                      : 'text-neutral-700 active:bg-neutral-50 active:scale-95'
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+              
+              <div className="mt-6 pt-6 border-t border-neutral-200">
+                <a
+                  href="https://selar.com/careerbrunch2025"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-accent-500 text-white px-6 py-4 rounded-xl font-semibold active:bg-accent-600 active:scale-95 transition-all duration-200 text-center font-body flex items-center justify-center space-x-2"
+                >
+                  <span>Buy Ticket</span>
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
           </div>
-        )}
+        </div>
       </div>
     </nav>
   );

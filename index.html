@@ -4,10 +4,101 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Career Brunch 2.0 Official Website</title>
+    
+    <!-- Primary Meta Tags -->
+    <title>Career Brunch 2.0 - Where Ambition Meets Opportunity | November 8th, 2025</title>
+    <meta name="title" content="Career Brunch 2.0 - Where Ambition Meets Opportunity | November 8th, 2025" />
+    <meta name="description" content="Join 250+ emerging professionals for a transformative day of career development, networking, and growth at Career Brunch 2.0. November 8th, 2025 in Lagos, Nigeria." />
+    <meta name="keywords" content="career development, networking, professional growth, Lagos, Nigeria, GenZHR, career event, professional networking, career workshop" />
+    <meta name="author" content="GenZHR" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://careerbrunch.ng/" />
+    <meta property="og:title" content="Career Brunch 2.0 - Where Ambition Meets Opportunity" />
+    <meta property="og:description" content="Join 250+ emerging professionals for a transformative day of career development, networking, and growth at Career Brunch 2.0. November 8th, 2025 in Lagos, Nigeria." />
+    <meta property="og:image" content="/career-brunch-social-share.jpg" />
+    <meta property="og:site_name" content="Career Brunch 2.0" />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://careerbrunch.ng/" />
+    <meta property="twitter:title" content="Career Brunch 2.0 - Where Ambition Meets Opportunity" />
+    <meta property="twitter:description" content="Join 250+ emerging professionals for a transformative day of career development, networking, and growth at Career Brunch 2.0. November 8th, 2025 in Lagos, Nigeria." />
+    <meta property="twitter:image" content="/career-brunch-social-share.jpg" />
+    
+    <!-- Additional Meta Tags -->
+    <meta name="theme-color" content="#1060D3" />
+    <meta name="msapplication-TileColor" content="#1060D3" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Career Brunch 2.0" />
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "Career Brunch 2.0",
+      "description": "A transformative day of career development, networking, and growth for emerging professionals",
+      "startDate": "2025-11-08T09:00:00+01:00",
+      "endDate": "2025-11-08T16:00:00+01:00",
+      "location": {
+        "@type": "Place",
+        "name": "Zone Tech Park",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Gbagada",
+          "addressRegion": "Lagos",
+          "addressCountry": "NG"
+        }
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "GenZHR",
+        "url": "https://genzhr.org"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "NGN",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Loading State -->
+    <div id="loading" class="fixed inset-0 bg-white z-50 flex items-center justify-center">
+      <div class="text-center">
+        <div class="w-16 h-16 border-4 border-primary-200 border-t-primary-600 rounded-full animate-spin mx-auto mb-4"></div>
+        <p class="text-primary-600 font-semibold">Loading Career Brunch 2.0...</p>
+      </div>
+    </div>
+    
+    <script>
+      // Hide loading screen when page is ready
+      window.addEventListener('load', function() {
+        const loading = document.getElementById('loading');
+        if (loading) {
+          loading.style.opacity = '0';
+          setTimeout(() => {
+            loading.style.display = 'none';
+          }, 300);
+        }
+      });
+    </script>
   </body>
 </html>
