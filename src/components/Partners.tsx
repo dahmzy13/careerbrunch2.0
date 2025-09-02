@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Building2, Users, Globe, Newspaper, Mail, ExternalLink, ArrowRight, Star, Award } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Building2, Users, Globe, Newspaper, Star, Award, Mail, ExternalLink } from 'lucide-react';
 
 const Partners = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -258,7 +258,7 @@ const Partners = () => {
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredPartners.map((partner, index) => (
+            {filteredPartners.map((partner, _index) => (
               <div 
                 key={partner.id} 
                 className="group bg-white rounded-3xl shadow-soft hover:shadow-large transition-all duration-500 transform hover:-translate-y-2 overflow-hidden border border-neutral-100"

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronDown, ChevronUp, Search, MessageCircle, Mail, ArrowRight, ExternalLink } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { ChevronDown, ChevronUp, Search } from 'lucide-react';
 
 const FAQ = () => {
   const [isVisible, setIsVisible] = useState(false);
